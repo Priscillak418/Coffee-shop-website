@@ -1,0 +1,339 @@
+/* Reset and base styles */
+:root {
+    /* Custom Color Palette */
+    --peach: #EFC3A4;       /* Light Accent / Gold */
+    --deep-brown: #4B1F0E;  /* Primary Dark Brown */
+    --soft-tan: #BE7656;    /* Secondary Accent / Mid Brown */
+    --warm-choc: #794028;   /* Mid-Tone Brown for Footer */
+    --almost-black: #0E0504; /* Text/Button Dark */
+    --light: #ffffff;
+    --dark-grey: #666666;
+    --transparent-peach: rgba(239, 195, 164, 0.25); /* 25% opacity peach */
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #fcf9f5;
+  color: #2f2517;
+}
+header {
+  background: #fff;
+  box-shadow: 0 2px 16px #00000014;
+  position: sticky;
+  top: 0;
+  z-index: 30;
+}
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #805c3b;
+}
+.logo img {
+  height: 60px;
+  margin-right: 0.7rem;
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2.2rem;
+  margin: 0;
+  padding: 0;
+}
+.nav-links a {
+  color: #805c3b;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.12rem;
+  transition: color 0.2s;
+}
+.nav-links a.active, .nav-links a:hover {
+  color: #e57f42;
+}
+
+/* ----------------------------------
+ * 2. NAVBAR & NAVIGATION (BASE/DESKTOP STYLES)
+ * ---------------------------------- */
+.navbar-custom {
+    background: var(--light);
+    /* Use 'rem' for padding for better scaling, keep ample space for desktop */
+    padding: 1.5rem 0; /* approx 24px 0 */
+}
+
+/* logo */
+.navbar-logo img {
+    /* Use a fluid unit like 'vh' (viewport height) or 'rem' for better scaling */
+    height: 6.5rem; /* Reduced from 150px to a more typical desktop logo height */
+    max-height: 150px; /* Ensure it doesn't get too large */
+}
+
+/* font */
+.navbar-nav .nav-link {
+    color: var(--light) !important;
+    font-weight: 500;
+    margin: 0 0.75rem; /* Use 'rem' */
+    transition: color 0.3s, background 0.3s; /* Added background transition */
+    padding: 0.5rem 1rem; /* Add padding for better desktop hover target */
+}
+
+/* Nav Link Active/Hover */
+.nav-link:hover,
+.nav-link.active {
+    background: var(--warm-choc);
+    border-radius: 10px;
+    color: white !important; /* Ensure good contrast on hover */
+}
+
+/* Reserve Button (Desktop) */
+.reserve-btn {
+    background: var(--deep-brown);
+    color: var(--light);
+    padding: 0.6rem 1.75rem; /* Use 'rem' */
+    border-radius: 40px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+.reserve-btn:hover {
+    background: var(--warm-choc);
+}
+.arrow-circle {
+    width: 1.75rem; /* Use 'rem' */
+    height: 1.75rem;
+    border-radius: 50%;
+    border: 2px solid var(--light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ----------------------------------
+ *RESPONSIVENESS ADJUSTMENTS
+ * ---------------------------------- */
+
+@media (max-width: 992px) {
+    /* 1. Shrink Header Padding */
+    .navbar-custom {
+        /* Reduce vertical padding for smaller screens */
+        padding: 0.75rem 0; /* approx 12px 0 */
+    }
+
+    /* 2. Shrink Logo */
+    .navbar-logo img {
+        /* Reduce the logo size significantly on smaller screens */
+        height: 4rem; /* approx 64px, easier to fit */
+    }
+
+    /* 3. Style Collapsed Menu Items */
+    .navbar-nav .nav-link {
+        /* Important: When links stack vertically (mobile view) */
+        color: var(--light) !important; /* Change text color for better visibility against collapsed menu background */
+        margin: 0.5rem 0; /* Add vertical margin between stacked links */
+        text-align: center;
+    }
+    
+    .nav-link:hover,
+    .nav-link.active {
+        /* Ensure hover background is full width */
+        border-radius: 50;
+        margin: 50;
+    }
+
+    /* 4. Style Reserve Button */
+    .reserve-btn {
+        /* Make the button full width and stack it clearly in the menu */
+        width: 90%;
+        display: flex; /* Ensure it stays flex for alignment */
+        justify-content: center;
+        margin: 1rem auto; /* Center it and add vertical spacing */
+    }
+}
+
+.hero {
+  background: url('./images/coffee-beans.jpg') center center / cover no-repeat;
+  height: 300px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.overlay {
+  width: 100%;
+  height: 100%;
+  background: rgba(43, 28, 11, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.overlay h1 {
+  color: #fff;
+  font-size: 2.7rem;
+  text-shadow: 1px 2px 14px #8b5122c4;
+}
+
+.section-nav {
+  background: #fcf9f5;
+  position: sticky;
+  top: 70px;
+  z-index: 20;
+}
+.section-nav ul {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 20px;
+  gap: 2rem;
+  list-style: none;
+}
+.section-nav ul li a {
+  color: #805c3b;
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 1.1rem;
+  transition: color 0.18s;
+}
+.section-nav ul li a:hover {
+  color: #da7725;
+}
+
+/* Alternating image-text sections */
+.info-section-vision {
+  display: flex;
+  align-items: center;
+  max-width: 1100px;
+  margin: 2.2rem auto;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 28px #8c634714;
+  overflow: hidden;
+  flex-wrap: wrap;
+}
+
+.info-section-mission {
+  display: flex;
+  align-items: center;
+  max-width: 1100px;
+  margin: 2.2rem auto;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 28px #8c634714;
+  overflow: hidden;
+  flex-wrap: wrap;
+}
+
+.info-img {
+  flex: 1 1 300px;
+  min-width: 220px;
+  height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.info-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.info-text {
+  flex-grow: 2;
+  flex-shrink: 1;
+  flex-basis: 370px;
+  padding: 1.7rem 2rem;
+}
+/* .info-text {
+  flex: 1;
+  padding: 1.7rem 2rem;
+} */
+
+
+.info-text h2 {
+  color: #a05c2d;
+  margin-top: 0;
+  margin-bottom: 0.8rem;
+}
+
+/* .info-section.alt {
+  flex-direction: row-reverse;
+} */
+
+/* Accordion styles */
+.accordion {
+  margin-top: 1rem;
+}
+.accordion-item {
+  margin-bottom: 0.6rem;
+  border-radius: 6px;
+  background: #fff7e8;
+  box-shadow: 0 1px 6px #a05c2d15;
+}
+.accordion-btn {
+  width: 100%;
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 1rem;
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: #a05c2d;
+  cursor: pointer;
+  transition: background 0.19s;
+  border-bottom: 1px solid #ebdec7;
+}
+.accordion-btn:hover {
+  background: #f3e2cf;
+}
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+  margin: 0 1rem;
+}
+.accordion-item.open .accordion-content {
+  max-height: 120px;
+  padding-bottom: 1rem;
+}
+
+footer {
+  background: #805c3b;
+  text-align: center;
+  color: #fff;
+  padding: 1rem 0;
+  font-size: 1rem;
+  margin-top: 3rem;
+}
+
+@media (max-width: 900px) {
+    .main-nav{
+        justify-content: flex-start;
+    }
+    .logo{
+        padding-right:10px;
+    }
+
+  .info-section-mission, .info-section-vision {
+    flex-direction: column;
+    height: 800px;
+  }
+  .info-img{
+    width: 100%;
+    height: 190px;
+    min-width: unset;
+  }
+  .section-nav ul {
+    gap: 1.1rem;
+  }
+}
