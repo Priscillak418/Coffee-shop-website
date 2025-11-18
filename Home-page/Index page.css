@@ -1,0 +1,534 @@
+:root {
+    /* Custom Color Palette */
+    --peach: #EFC3A4;       /* Light Accent / Gold */
+    --deep-brown: #4B1F0E;  /* Primary Dark Brown */
+    --soft-tan: #BE7656;    /* Secondary Accent / Mid Brown */
+    --warm-choc: #794028;   /* Mid-Tone Brown for Footer */
+    --almost-black: #0E0504; /* Text/Button Dark */
+    --light: #ffffff;
+    --dark-grey: #666666;
+    --transparent-peach: rgba(239, 195, 164, 0.25); /* 25% opacity peach */
+}
+
+/* ----------------------------------
+ * 1. BASE STYLES & ACCESSIBILITY
+ * ---------------------------------- */
+body {
+    /* Set only once for base text/font */
+    font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    color: var(--almost-black);
+    margin: 0; /* Important: Removes default body margin */
+    /* Add a fluid base font size using 'rem' */
+    font-size: 16px; /* Base for desktop */
+}
+
+/* Accessibility focus */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus {
+    outline: 3px solid var(--transparent-peach);
+    outline-offset: 2px;
+}
+
+/* Helper Heading Style - Use fluid font sizes (e.g., 'em', 'rem', or 'vw') */
+.container h2 {
+    color: var(--deep-brown);
+    /* Example: Use a larger, fluid font size for desktop headings */
+    font-size: 2.5rem;
+    margin-top: 1.5rem; /* Add some vertical spacing */
+}
+
+/* Utilities for buttons */
+.btn-outline-dark {
+    color: var(--almost-black);
+    border-color: var(--almost-black);
+    /* Ensure padding is somewhat fluid or ample for touch targets */
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    display: inline-block; /* Ensure it respects width/padding */
+    text-align: center;
+}
+.btn-outline-dark:hover {
+    background: var(--peach);
+    color: var(--almost-black); /* Ensure contrast on hover */
+}
+
+/* ----------------------------------
+ *RESPONSIVENESS ADJUSTMENTS (MEDIA QUERIES)
+ * ---------------------------------- */
+
+/* ➡️ Adjustments for smaller screens (e.g., mobile devices < 768px) */
+@media (max-width: 768px) {
+    body {
+        /* Slightly reduce base font size for better mobile reading experience */
+        font-size: 14px;
+    }
+
+    .container h2 {
+        /* Reduce heading size on smaller screens */
+        font-size: 1.8rem;
+        margin-top: 1rem;
+    }
+
+    .btn-outline-dark {
+        /* Increase button padding slightly to make it a bigger, easier touch target */
+        padding: 0.8rem 1.6rem;
+        width: 100%; /* Optional: Make buttons full-width on mobile */
+        margin-bottom: 0.5rem; /* Add spacing between full-width buttons */
+    }
+}
+
+/* ➡️ Adjustments for very small screens (e.g., mobile devices < 480px) */
+@media (max-width: 480px) {
+    /* Further small adjustments if needed, though 768px often covers most mobile needs */
+}
+
+/* ----------------------------------
+ * 2. NAVBAR & NAVIGATION (BASE/DESKTOP STYLES)
+ * ---------------------------------- */
+.navbar-custom {
+    background: var(--light);
+    /* Use 'rem' for padding for better scaling, keep ample space for desktop */
+    padding: 1.5rem 0; /* approx 24px 0 */
+}
+
+/* logo */
+.navbar-logo img {
+    /* Use a fluid unit like 'vh' (viewport height) or 'rem' for better scaling */
+    height: 6.5rem; /* Reduced from 150px to a more typical desktop logo height */
+    max-height: 150px; /* Ensure it doesn't get too large */
+}
+
+/* font */
+.navbar-nav .nav-link {
+    color: var(--light) !important;
+    font-weight: 500;
+    margin: 0 0.75rem; /* Use 'rem' */
+    transition: color 0.3s, background 0.3s; /* Added background transition */
+    padding: 0.5rem 1rem; /* Add padding for better desktop hover target */
+}
+
+/* Nav Link Active/Hover */
+.nav-link:hover,
+.nav-link.active {
+    background: var(--warm-choc);
+    border-radius: 10px;
+    color: white !important; /* Ensure good contrast on hover */
+}
+
+/* Reserve Button (Desktop) */
+.reserve-btn {
+    background: var(--deep-brown);
+    color: var(--light);
+    padding: 0.6rem 1.75rem; /* Use 'rem' */
+    border-radius: 40px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+.reserve-btn:hover {
+    background: var(--warm-choc);
+}
+.arrow-circle {
+    width: 1.75rem; /* Use 'rem' */
+    height: 1.75rem;
+    border-radius: 50%;
+    border: 2px solid var(--light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ----------------------------------
+ *RESPONSIVENESS ADJUSTMENTS
+ * ---------------------------------- */
+
+@media (max-width: 992px) {
+    /* 1. Shrink Header Padding */
+    .navbar-custom {
+        /* Reduce vertical padding for smaller screens */
+        padding: 0.75rem 0; /* approx 12px 0 */
+    }
+
+    /* 2. Shrink Logo */
+    .navbar-logo img {
+        /* Reduce the logo size significantly on smaller screens */
+        height: 4rem; /* approx 64px, easier to fit */
+    }
+
+    /* 3. Style Collapsed Menu Items */
+    .navbar-nav .nav-link {
+        /* Important: When links stack vertically (mobile view) */
+        color: var(--light) !important; /* Change text color for better visibility against collapsed menu background */
+        margin: 0.5rem 0; /* Add vertical margin between stacked links */
+        text-align: center;
+    }
+    
+    .nav-link:hover,
+    .nav-link.active {
+        /* Ensure hover background is full width */
+        border-radius: 50;
+        margin: 50;
+    }
+
+    /* 4. Style Reserve Button */
+    .reserve-btn {
+        /* Make the button full width and stack it clearly in the menu */
+        width: 90%;
+        display: flex; /* Ensure it stays flex for alignment */
+        justify-content: center;
+        margin: 1rem auto; /* Center it and add vertical spacing */
+    }
+}
+/* ----------------------------------
+ * 3. HERO SECTION (BASE/DESKTOP STYLES)
+ * ---------------------------------- */
+.hero {
+    /* background properties */
+    background: url('background 2.jpg') no-repeat center center/cover;
+    color: var(--light);
+    text-align: center;
+    /* Use 'rem' for better scaling */
+    padding: 5rem 1.25rem; /* 80px 20px */
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero .container {
+    /* Use 'rem' for padding */
+    max-width: 60rem; /* 960px */
+    margin: 0 auto;
+    padding: 2.5rem; /* 40px */
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 20px;
+}
+
+/* Headings and Text */
+.hero .display-5 {
+    font-size: 3.5rem;
+    margin-bottom: 0.5rem;
+}
+.hero .lead {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+/* Hero Buttons (Base/Desktop) */
+.hero .button-group {
+    margin-top: 1.25rem; /* 20px */
+}
+.hero .btn {
+    display: inline-block;
+    padding: 1.25rem 1.875rem; /* 20px 30px */
+    margin: 0 0.625rem; /* 0 10px */
+    text-decoration: none;
+    color: var(--light);
+    background-color: var(--deep-brown);
+    border: 2px solid var(--light);
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    /* Ensure text doesn't wrap oddly on desktop buttons */
+    white-space: nowrap;
+}
+
+.hero .btn:hover {
+    background-color: var(--warm-choc);
+    color: var(--light);
+}
+
+/* ----------------------------------
+ *RESPONSIVENESS ADJUSTMENTS 
+ * ---------------------------------- */
+
+@media (max-width: 768px) {
+    /* Reduce Hero Section Height and Padding */
+    .hero {
+        min-height: 400px; /* Reduce minimum height on mobile */
+        padding: 3rem 1rem; /* Reduce vertical padding */
+    }
+
+    /* Adjust Inner Container */
+    .hero .container {
+        padding: 1.5rem; /* Reduce inner container padding */
+        max-width: 100%; /* Allow container to take up full width (minus padding) */
+        border-radius: 10px; /* Slight reduction in border-radius */
+    }
+
+    /* Reduce Font Sizes for Mobile Readability */
+    .hero .display-5 {
+        font-size: 2rem; /* Significant reduction for mobile heading */
+    }
+    .hero .lead {
+        font-size: 1rem; /* Reduce subheading/lead text size */
+        margin-bottom: 1.5rem;
+    }
+
+    /* Stack Buttons Vertically */
+    .hero .button-group {
+        display: flex; /* Use flexbox to manage button layout */
+        flex-direction: column; /* Stack buttons vertically */
+        gap: 1rem; /* Add spacing between buttons */
+        margin-top: 1rem;
+    }
+    .hero .btn {
+        width: 100%; /* Make buttons full-width */
+        margin: 0; /* Remove horizontal margins */
+        padding: 0.8rem 1.5rem; /* Reduce button padding but keep them large touch targets */
+    }
+}
+
+/* ----------------------------------
+ * 5. TESTIMONIAL SLIDER
+ * ---------------------------------- */
+.testimonial-container {
+    background-color: var(--almost-black);
+    color: var(--light);
+    width: 100%; /* Make it full width for container alignment */
+    max-width: none;
+    padding: 40px 0;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Dark Overlay */
+.testimonial-container::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0, 0, 0, 0.65); /* Keeps the dark overlay */
+    z-index: 1;
+}
+
+.testimonial-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 50px;
+    max-width: 900px; /* Re-introduce max-width for content centering */
+    margin: 0 auto;
+}
+
+.testimonial-header h2 {
+    font-size: 2.5em;
+    color: var(--light); /* Using variable */
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+/* Slides and Animations */
+.testimonial-slide {
+    display: none;
+    animation: fadeIn 1s;
+}
+.testimonial-slide.active {
+    display: block;
+}
+@keyframes fadeIn {
+    from { opacity: 0.5; }
+    to { opacity: 1; }
+}
+
+.testimonial-text {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    columns: 200px 2;
+    column-gap: 50px;
+    color:var(--light);
+}
+
+.customer-name {
+    display: block;
+    text-align: right;
+    font-style: italic;
+    font-weight: bold;
+    color: var(--light);
+    margin-top: 10px;
+}
+
+/* Navigation Dots */
+.dot {
+    height: 10px; width: 10px; margin: 0 5px;
+    background-color: var(--dark-grey);
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+.dot.active {
+    background-color: var(--warm-choc);
+}
+
+/* Testimonial Button */
+.view-more-btn {
+    background-color: transparent;
+    color: var(--light);
+    border: 1px solid var(--light);
+    padding: 12px 30px;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.view-more-btn:hover {
+    background-color: var(--light);
+    color: var(--warm-choc);
+}
+
+/*footer starts*/
+        :root{
+            --deep-brown: #4B1F0E;
+            --soft-tan: #BE7656;
+            --warm-choc: #794028;
+            --almost-black: #0E0504;
+            --light: #ffffff;
+            --footer-bg: #1A1A1A;
+            --footer-text: #B0B0B0;
+            --footer-heading: #FFFFFF;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f4f4;
+            color: var(--almost-black);
+        }
+
+        /* --- Custom Footer Styling --- */
+        .cafe-footer {
+            background-color: var(--footer-bg);
+            padding: 50px 0 0;
+            color: var(--footer-text);
+            font-size: 0.95rem;
+        }
+        
+        /* Column Headings */
+        .cafe-footer h5 {
+            color: var(--footer-heading);
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+        }
+
+        /* Contact Us Column */
+        .contact-info p {
+            margin-bottom: 5px;
+            line-height: 1.5;
+        }
+
+        /* Logo */
+        .footer-logo {
+            width: 200px;
+            height: 200px;
+            margin-top: 15px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .footer-logo img {
+             width: 100%;
+             height: auto;
+             border-radius: 50%;
+        }
+
+        /* Opening Hours Table */
+        .opening-hours div {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .opening-hours span:first-child {
+            font-weight: 500;
+        }
+        .opening-hours span.closed {
+            color: var(--light);
+        }
+
+        /* Site Links */
+        .site-links ul {
+            list-style: none;
+            padding: 0;
+        }
+        .site-links ul li {
+            margin-bottom: 10px;
+        }
+        .site-links ul li a {
+            color: var(--footer-text);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .site-links ul li a:hover {
+            color: var(--warm-choc);
+        }
+
+        /* Bottom Copyright Bar */
+        .copyright-bar {
+            background-color: var(--almost-black);
+            color: var(--dark-grey);
+            padding: 15px 0;
+            font-size: 0.8rem;
+            margin-top: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        /* Back to top button*/
+        .back-to-top {
+            background-color: var(--deep-brown);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light);
+            text-decoration: none;
+            font-weight: bold;
+            line-height: 1;
+        }
+
+        /*Responsiveness */
+        @media (max-width: 768px) {
+            .cafe-footer .col-md-3 {
+                margin-bottom: 30px;
+            }
+            .copyright-bar {
+                flex-direction: column;
+                text-align: center;
+            }
+            .back-to-top {
+                display: none; /* Hide button on small screens */
+            }
+        @media (max-width: 768px) {
+             .opening-hours {
+                text-align: center;
+            }
+             .site-links {
+                text-align: center;
+            }
+        }
+    }
+        /* --- Custom Footer Styling --- */
+            .cafe-footer {
+                 background-color: var(--footer-bg);
+                padding: 50px 0 0;
+                color: var(--footer-text);
+        /* This rule applies to all screen sizes */
+                font-size: 1rem; 
+}
+
+/*footer ends*/        

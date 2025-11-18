@@ -1,4 +1,16 @@
 /* Reset and base styles */
+:root {
+    /* Custom Color Palette */
+    --peach: #EFC3A4;       /* Light Accent / Gold */
+    --deep-brown: #4B1F0E;  /* Primary Dark Brown */
+    --soft-tan: #BE7656;    /* Secondary Accent / Mid Brown */
+    --warm-choc: #794028;   /* Mid-Tone Brown for Footer */
+    --almost-black: #0E0504; /* Text/Button Dark */
+    --light: #ffffff;
+    --dark-grey: #666666;
+    --transparent-peach: rgba(239, 195, 164, 0.25); /* 25% opacity peach */
+}
+
 body {
   margin: 0;
   font-family: 'Segoe UI', Arial, sans-serif;
@@ -47,6 +59,107 @@ header {
 }
 .nav-links a.active, .nav-links a:hover {
   color: #e57f42;
+}
+
+/* ----------------------------------
+ * 2. NAVBAR & NAVIGATION (BASE/DESKTOP STYLES)
+ * ---------------------------------- */
+.navbar-custom {
+    background: var(--light);
+    /* Use 'rem' for padding for better scaling, keep ample space for desktop */
+    padding: 1.5rem 0; /* approx 24px 0 */
+}
+
+/* logo */
+.navbar-logo img {
+    /* Use a fluid unit like 'vh' (viewport height) or 'rem' for better scaling */
+    height: 6.5rem; /* Reduced from 150px to a more typical desktop logo height */
+    max-height: 150px; /* Ensure it doesn't get too large */
+}
+
+/* font */
+.navbar-nav .nav-link {
+    color: var(--light) !important;
+    font-weight: 500;
+    margin: 0 0.75rem; /* Use 'rem' */
+    transition: color 0.3s, background 0.3s; /* Added background transition */
+    padding: 0.5rem 1rem; /* Add padding for better desktop hover target */
+}
+
+/* Nav Link Active/Hover */
+.nav-link:hover,
+.nav-link.active {
+    background: var(--warm-choc);
+    border-radius: 10px;
+    color: white !important; /* Ensure good contrast on hover */
+}
+
+/* Reserve Button (Desktop) */
+.reserve-btn {
+    background: var(--deep-brown);
+    color: var(--light);
+    padding: 0.6rem 1.75rem; /* Use 'rem' */
+    border-radius: 40px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+.reserve-btn:hover {
+    background: var(--warm-choc);
+}
+.arrow-circle {
+    width: 1.75rem; /* Use 'rem' */
+    height: 1.75rem;
+    border-radius: 50%;
+    border: 2px solid var(--light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ----------------------------------
+ *RESPONSIVENESS ADJUSTMENTS
+ * ---------------------------------- */
+
+@media (max-width: 992px) {
+    /* 1. Shrink Header Padding */
+    .navbar-custom {
+        /* Reduce vertical padding for smaller screens */
+        padding: 0.75rem 0; /* approx 12px 0 */
+    }
+
+    /* 2. Shrink Logo */
+    .navbar-logo img {
+        /* Reduce the logo size significantly on smaller screens */
+        height: 4rem; /* approx 64px, easier to fit */
+    }
+
+    /* 3. Style Collapsed Menu Items */
+    .navbar-nav .nav-link {
+        /* Important: When links stack vertically (mobile view) */
+        color: var(--light) !important; /* Change text color for better visibility against collapsed menu background */
+        margin: 0.5rem 0; /* Add vertical margin between stacked links */
+        text-align: center;
+    }
+    
+    .nav-link:hover,
+    .nav-link.active {
+        /* Ensure hover background is full width */
+        border-radius: 50;
+        margin: 50;
+    }
+
+    /* 4. Style Reserve Button */
+    .reserve-btn {
+        /* Make the button full width and stack it clearly in the menu */
+        width: 90%;
+        display: flex; /* Ensure it stays flex for alignment */
+        justify-content: center;
+        margin: 1rem auto; /* Center it and add vertical spacing */
+    }
 }
 
 .hero {
